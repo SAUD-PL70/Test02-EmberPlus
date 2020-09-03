@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Connection.o \
 	${OBJECTDIR}/MainApp.o \
 	${OBJECTDIR}/MainFrm.o \
 	${OBJECTDIR}/emberp.o
@@ -63,6 +64,11 @@ LDLIBSOPTIONS=`wx-config --libs`
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/test02_emberplus: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/test02_emberplus ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Connection.o: Connection.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Connection.o Connection.cpp
 
 ${OBJECTDIR}/MainApp.o: MainApp.cpp
 	${MKDIR} -p ${OBJECTDIR}

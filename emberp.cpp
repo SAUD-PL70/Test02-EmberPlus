@@ -13,22 +13,28 @@ MainFrmBase::MainFrmBase( wxWindow* parent, wxWindowID id, const wxString& title
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 
-	wxBoxSizer* bSizer1;
-	bSizer1 = new wxBoxSizer( wxVERTICAL );
+	StatusBar = this->CreateStatusBar( 1, wxSTB_SIZEGRIP, wxID_ANY );
+	wxFlexGridSizer* fgSizer1;
+	fgSizer1 = new wxFlexGridSizer( 4, 1, 10, 10 );
+	fgSizer1->AddGrowableCol( 0 );
+	fgSizer1->AddGrowableRow( 1 );
+	fgSizer1->AddGrowableRow( 3 );
+	fgSizer1->SetFlexibleDirection( wxBOTH );
+	fgSizer1->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
 
-	bSizer1->Add( 0, 0, 1, wxEXPAND, 5 );
+	fgSizer1->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer2;
 	bSizer2 = new wxBoxSizer( wxHORIZONTAL );
 
 
-	bSizer2->Add( 0, 0, 1, wxEXPAND, 5 );
+	bSizer2->Add( 20, 20, 1, wxEXPAND, 5 );
 
 	Led1 = new wxPanel( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	Led1->SetBackgroundColour( wxColour( 128, 0, 0 ) );
 
-	bSizer2->Add( Led1, 1, wxEXPAND | wxALL, 5 );
+	bSizer2->Add( Led1, 1, wxEXPAND | wxALL, 0 );
 
 
 	bSizer2->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -36,7 +42,7 @@ MainFrmBase::MainFrmBase( wxWindow* parent, wxWindowID id, const wxString& title
 	Led2 = new wxPanel( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	Led2->SetBackgroundColour( wxColour( 128, 0, 0 ) );
 
-	bSizer2->Add( Led2, 1, wxEXPAND | wxALL, 5 );
+	bSizer2->Add( Led2, 1, wxEXPAND | wxALL, 0 );
 
 
 	bSizer2->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -44,51 +50,55 @@ MainFrmBase::MainFrmBase( wxWindow* parent, wxWindowID id, const wxString& title
 	Led3 = new wxPanel( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	Led3->SetBackgroundColour( wxColour( 128, 0, 0 ) );
 
-	bSizer2->Add( Led3, 1, wxEXPAND | wxALL, 5 );
+	bSizer2->Add( Led3, 1, wxEXPAND | wxALL, 0 );
 
 
 	bSizer2->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer1->Add( bSizer2, 1, wxEXPAND, 5 );
+	fgSizer1->Add( bSizer2, 1, wxEXPAND, 5 );
 
 
-	bSizer1->Add( 0, 0, 1, wxEXPAND, 5 );
+	fgSizer1->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	wxBoxSizer* bSizer3;
-	bSizer3 = new wxBoxSizer( wxHORIZONTAL );
+	wxFlexGridSizer* fgSizer2;
+	fgSizer2 = new wxFlexGridSizer( 0, 5, 0, 0 );
+	fgSizer2->AddGrowableCol( 4 );
+	fgSizer2->SetFlexibleDirection( wxBOTH );
+	fgSizer2->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
 	m_staticText1 = new wxStaticText( this, wxID_ANY, wxT("Ip Address:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText1->Wrap( -1 );
-	bSizer3->Add( m_staticText1, 0, wxALIGN_CENTER_VERTICAL, 5 );
+	fgSizer2->Add( m_staticText1, 0, wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT, 5 );
 
 	IPCtl = new wxTextCtrl( this, wxID_ANY, wxT("127.0.0.1"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer3->Add( IPCtl, 0, wxALL, 5 );
+	fgSizer2->Add( IPCtl, 0, wxEXPAND, 5 );
 
 	m_staticText2 = new wxStaticText( this, wxID_ANY, wxT("Port:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText2->Wrap( -1 );
-	bSizer3->Add( m_staticText2, 0, wxALIGN_CENTER_VERTICAL, 5 );
+	fgSizer2->Add( m_staticText2, 0, wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT, 5 );
 
 	PortCtl = new wxTextCtrl( this, wxID_ANY, wxT("9000"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer3->Add( PortCtl, 0, wxALL, 5 );
+	fgSizer2->Add( PortCtl, 0, wxEXPAND, 5 );
 
 	ListenBtn = new wxButton( this, wxID_ANY, wxT("Listen"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer3->Add( ListenBtn, 0, wxALL, 5 );
+	fgSizer2->Add( ListenBtn, 0, wxEXPAND|wxLEFT|wxRIGHT, 5 );
 
 
-	bSizer1->Add( bSizer3, 1, wxEXPAND, 5 );
+	fgSizer1->Add( fgSizer2, 1, wxEXPAND, 5 );
 
 
-	this->SetSizer( bSizer1 );
+	this->SetSizer( fgSizer1 );
 	this->Layout();
-	StatusBar = this->CreateStatusBar( 1, wxSTB_SIZEGRIP, wxID_ANY );
 
 	this->Centre( wxBOTH );
 
 	// Connect Events
 	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( MainFrmBase::MainFrmClose ) );
-	IPCtl->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MainFrmBase::ValidadeIP ), NULL, this );
-	PortCtl->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MainFrmBase::ValidadePort ), NULL, this );
+	IPCtl->Connect( wxEVT_KILL_FOCUS, wxFocusEventHandler( MainFrmBase::ValidadeIP ), NULL, this );
+	IPCtl->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MainFrmBase::CheckIP ), NULL, this );
+	PortCtl->Connect( wxEVT_KILL_FOCUS, wxFocusEventHandler( MainFrmBase::ValidadePort ), NULL, this );
+	PortCtl->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MainFrmBase::CheckPort ), NULL, this );
 	ListenBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MainFrmBase::ListenBtnPressed ), NULL, this );
 }
 
@@ -96,8 +106,10 @@ MainFrmBase::~MainFrmBase()
 {
 	// Disconnect Events
 	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( MainFrmBase::MainFrmClose ) );
-	IPCtl->Disconnect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MainFrmBase::ValidadeIP ), NULL, this );
-	PortCtl->Disconnect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MainFrmBase::ValidadePort ), NULL, this );
+	IPCtl->Disconnect( wxEVT_KILL_FOCUS, wxFocusEventHandler( MainFrmBase::ValidadeIP ), NULL, this );
+	IPCtl->Disconnect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MainFrmBase::CheckIP ), NULL, this );
+	PortCtl->Disconnect( wxEVT_KILL_FOCUS, wxFocusEventHandler( MainFrmBase::ValidadePort ), NULL, this );
+	PortCtl->Disconnect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MainFrmBase::CheckPort ), NULL, this );
 	ListenBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MainFrmBase::ListenBtnPressed ), NULL, this );
 
 }

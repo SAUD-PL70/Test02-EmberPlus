@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Connection.h</itemPath>
       <itemPath>MainFrm.h</itemPath>
       <itemPath>emberp.h</itemPath>
     </logicalFolder>
@@ -15,6 +16,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Connection.cpp</itemPath>
       <itemPath>MainApp.cpp</itemPath>
       <itemPath>MainFrm.cpp</itemPath>
       <itemPath>emberp.cpp</itemPath>
@@ -50,6 +52,10 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="MainApp.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MainFrm.cpp" ex="false" tool="1" flavor2="0">
@@ -83,6 +89,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="MainApp.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MainFrm.cpp" ex="false" tool="1" flavor2="0">
