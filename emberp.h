@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version Oct 26 2018)
+// C++ code generated with wxFormBuilder (version 3.9.0 Jun 21 2020)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -19,10 +19,10 @@
 #include <wx/sizer.h>
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
+#include <wx/button.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
-#include <wx/button.h>
 #include <wx/frame.h>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -37,6 +37,7 @@ class MainFrmBase : public wxFrame
 
 	protected:
 		wxStatusBar* StatusBar;
+		wxPanel* m_panel4;
 		wxPanel* Led1;
 		wxPanel* Led2;
 		wxPanel* Led3;
@@ -57,7 +58,7 @@ class MainFrmBase : public wxFrame
 
 	public:
 
-		MainFrmBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Ember+ \"LED\""), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 376,143 ), long style = wxCAPTION|wxCLOSE_BOX|wxBORDER_STATIC|wxTAB_TRAVERSAL );
+		MainFrmBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Ember+ \"LED\""), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 488,217 ), long style = wxCAPTION|wxCLOSE_BOX|wxTAB_TRAVERSAL );
 
 		~MainFrmBase();
 

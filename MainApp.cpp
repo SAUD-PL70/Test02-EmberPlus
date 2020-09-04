@@ -2,7 +2,7 @@
 #include "MainFrm.h"
 
 class MainApp : public wxApp {
-    bool OnInit();
+    virtual bool OnInit();
 };
 
 bool MainApp::OnInit()

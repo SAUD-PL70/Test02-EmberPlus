@@ -1,11 +1,16 @@
+#include <regex>
 #include "MainFrm.h"
 #include <wx/msgdlg.h>
-#include <regex>
+
+extern "C" {
+    extern const char* emberplus_icon_xpm[1342];
+}
 
 bool MainFrm::isValidIP(const std::string& str)
 {
-    std::regex ipcheck("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
-    return std::regex_match(str,ipcheck);
+    const std::regex ipcheck("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
+    std::smatch m;
+    return std::regex_match(str,m,ipcheck);
 }
 
 bool MainFrm::isValidPort(const std::string& str, int& val)
@@ -32,10 +37,13 @@ MainFrm::MainFrm( wxWindow* parent )
 :
 MainFrmBase( parent )
 {
+    wxIcon icon(emberplus_icon_xpm);
+    SetIcon(icon);
     StatusBar->SetStatusText(wxT("Connections: 0"));
     ip = "127.0.0.1";
     port = DEFAULT_PORT;
     textbackground = IPCtl->GetBackgroundColour();
+    ListenBtn->SetFocus();
 }
 
 MainFrm::~MainFrm()
@@ -45,7 +53,7 @@ MainFrm::~MainFrm()
 
 void MainFrm::MainFrmClose( wxCloseEvent& event )
 {
-    Close();
+    Destroy();
 }
 
 void MainFrm::ValidadeIP( wxFocusEvent& event )
@@ -58,7 +66,10 @@ void MainFrm::ValidadeIP( wxFocusEvent& event )
         event.Skip(false);
     }
     else
+    {
         ip = tempip;
+        event.Skip();
+    }
 }
 
 void MainFrm::CheckIP( wxCommandEvent& event )
@@ -68,6 +79,7 @@ void MainFrm::CheckIP( wxCommandEvent& event )
         IPCtl->SetBackgroundColour(wxColour(255,200,200));
     else
         IPCtl->SetBackgroundColour(textbackground);
+    IPCtl->Refresh();
 }
 
 void MainFrm::CheckPort( wxCommandEvent& event )
@@ -77,6 +89,7 @@ void MainFrm::CheckPort( wxCommandEvent& event )
         PortCtl->SetBackgroundColour(wxColour(255,200,200));
     else
         PortCtl->SetBackgroundColour(textbackground);
+    PortCtl->Refresh();
 }
 
 void MainFrm::ValidadePort( wxFocusEvent& event )
@@ -90,6 +103,7 @@ void MainFrm::ValidadePort( wxFocusEvent& event )
     else {
         port = tempval;
     }
+    event.Skip();
 }
 
 void MainFrm::ListenBtnPressed( wxCommandEvent& event )

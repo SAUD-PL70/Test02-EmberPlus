@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Test02_EmberPlus
+PROJECTNAME=Test02-EmberPlus
 
 # Active Configuration
 DEFAULTCONF=Debug

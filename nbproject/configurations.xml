@@ -20,6 +20,7 @@
       <itemPath>MainApp.cpp</itemPath>
       <itemPath>MainFrm.cpp</itemPath>
       <itemPath>emberp.cpp</itemPath>
+      <itemPath>emberplus_icon.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -35,9 +36,10 @@
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="Debug" type="1">
+    <conf name="Debug" type="1" platformSpecific="true">
       <toolsSet>
-        <compilerSet>default</compilerSet>
+        <compilerSet>MinGW|MinGW</compilerSet>
+        <platform>3</platform>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
@@ -52,10 +54,6 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="Connection.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Connection.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="MainApp.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MainFrm.cpp" ex="false" tool="1" flavor2="0">
@@ -67,6 +65,8 @@
       <item path="emberp.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="emberp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="emberplus_icon.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -104,6 +104,8 @@
       <item path="emberp.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="emberp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="emberplus_icon.c" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
