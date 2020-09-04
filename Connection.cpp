@@ -13,9 +13,49 @@
 
 #include "Connection.h"
 
-Connection::Connection() {
+Connection::Connection(wxEvtHandler* evthandler)
+{
+    this->evthandler = evthandler;
 }
 
-Connection::~Connection() {
+bool Connection::Connect(const std::string& ip, int port)
+{
+    wxIPV4address ip;
+    ip.Hostname(ip);
+    ip.Service((unsigned short)port);
+    server = new wxSocketServer(ip);
+    server->SetEventHandler(evthandler);
+    server->SetNotify(0x0f); //All notifies
+    evthandler->Bind(wxEVT_SOCKET, [&](wxSocketEvent& ev)
+    {
+        switch(ev.GetSocketEvent())
+        {
+            case wxSocketNotify::wxSOCKET_CONNECTION:
+                connections.insert(connections.end(),server->Accept(false));
+                evthandler->QueueEvent(new wxCommandEvent());
+                break;
+            case wxSocketNotify::wxSOCKET_LOST:
+                break;
+            case wxSocketNotify::wxSOCKET_INPUT:
+                break;
+            case wxSocketNotify::wxSOCKET_OUTPUT:
+                break;
+        }
+    });
+    server->Notify(true);
 }
 
+void Connection::Disconnect()
+{
+    
+}
+
+void AddLed(const std::string& str)
+{
+    
+}
+
+virtual Connection::~Connection()
+{
+    
+}

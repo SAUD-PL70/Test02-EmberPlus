@@ -16,16 +16,18 @@
 #ifndef CONNECTION_H
 #define CONNECTION_H
 
-class Connection {
+class Connection : public wxEvtHandler {
 public:
-    Connection();
-    bool Connect();
+    Connection(wxEvtHandler* evthandler);
+    bool Connect(const std::string& ip, int port);
     void Disconnect();
-    void AddLed(void (*setled)(bool state));
+    void AddLed(const std::string& str);
     virtual ~Connection();
 private:
     std::list<wxSocketBase*> connections;
-    std::list<void(*)(bool)> leds;
+    std::list<std::string> leds;
+    wxSocketServer* server;
+    wxEvtHandler evthandler;
 };
 
 #endif /* CONNECTION_H */
