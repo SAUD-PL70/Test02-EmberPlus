@@ -32,7 +32,7 @@ bool Connection::Connect(const std::string& ip, int port)
         {
             case wxSocketNotify::wxSOCKET_CONNECTION:
                 connections.insert(connections.end(),server->Accept(false));
-                evthandler->QueueEvent(new wxCommandEvent());
+                evthandler->QueueEvent(new wxCommandEvent(CONNECTION_ACQUIRED));
                 break;
             case wxSocketNotify::wxSOCKET_LOST:
                 break;

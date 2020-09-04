@@ -16,6 +16,11 @@
 #ifndef CONNECTION_H
 #define CONNECTION_H
 
+#define CONNECTION_ACQUIRED wxEVT_USER_FIRST
+#define CONNECTION_LOST     CONNECTION_ACQUIRED+1
+#define LED_SET             CONNECTION_LOST+1
+#define LED_UNSET           LED_SET+1
+
 class Connection : public wxEvtHandler {
 public:
     Connection(wxEvtHandler* evthandler);
