@@ -12,27 +12,37 @@
  */
 #include <wx/socket.h>
 #include <list>
+#include "events.h"
 
 #ifndef CONNECTION_H
 #define CONNECTION_H
 
-#define CONNECTION_ACQUIRED wxEVT_USER_FIRST
-#define CONNECTION_LOST     CONNECTION_ACQUIRED+1
-#define LED_SET             CONNECTION_LOST+1
-#define LED_UNSET           LED_SET+1
-
-class Connection : public wxEvtHandler {
+class Connection {
 public:
-    Connection(wxEvtHandler* evthandler);
-    bool Connect(const std::string& ip, int port);
-    void Disconnect();
-    void AddLed(const std::string& str);
+    Connection(wxEvtHandler* evthandler,const std::string& ip, int port);
+    void AddLed(wxEventTypeTag<wxCommandEvent>& on, wxEventTypeTag<wxCommandEvent>& off);
     virtual ~Connection();
 private:
+    class Led  {
+        public:
+            Led(Connection * obj, wxEventTypeTag<wxCommandEvent>* on, wxEventTypeTag<wxCommandEvent>* off);
+            std::string toString() { return str; }
+            bool getState() { return state; }
+            void setState(bool state);
+            virtual ~Led();
+        private:
+            static int numleds;
+            Connection* obj;
+            std::string str;
+            bool state;
+            wxEventTypeTag<wxCommandEvent>* on;
+            wxEventTypeTag<wxCommandEvent>* off;
+    };
+    void OnSocketEvt(wxSocketEvent& ev);
     std::list<wxSocketBase*> connections;
-    std::list<std::string> leds;
+    std::list<Led*> leds;
     wxSocketServer* server;
-    wxEvtHandler evthandler;
+    wxEvtHandler* evthandler;
 };
 
 #endif /* CONNECTION_H */

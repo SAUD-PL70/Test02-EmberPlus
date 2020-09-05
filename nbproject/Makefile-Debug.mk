@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=GNU-Linux
+CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Connection.o \
 	${OBJECTDIR}/MainApp.o \
 	${OBJECTDIR}/MainFrm.o \
 	${OBJECTDIR}/emberp.o \
@@ -59,11 +60,16 @@ LDLIBSOPTIONS=`wx-config --libs`
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/test02-emberplus.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/test02_emberplus
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/test02-emberplus.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/test02_emberplus: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/test02-emberplus ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/test02_emberplus ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Connection.o: Connection.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Connection.o Connection.cpp
 
 ${OBJECTDIR}/MainApp.o: MainApp.cpp
 	${MKDIR} -p ${OBJECTDIR}

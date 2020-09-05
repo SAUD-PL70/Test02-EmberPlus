@@ -41,6 +41,7 @@ MainFrmBase( parent )
 {
     wxIcon icon(emberplus_icon_xpm);
     SetIcon(icon);
+    server=nullptr;
     state=0;
     connections=0;
     StatusBar->SetStatusText(wxT("Connections: 0"));
@@ -89,7 +90,7 @@ MainFrmBase( parent )
         }
         std::string str="Connections: ";
         str += std::to_string(connections);
-        StatusBar->SetLabel(str);
+        StatusBar->SetStatusText(str);
         ev.Skip();
     });
 }
@@ -103,6 +104,8 @@ MainFrm::~MainFrm()
     Unbind(LED2_OFF,[&](wxCommandEvent& ev){});
     Unbind(LED3_OFF,[&](wxCommandEvent& ev){});
     Unbind(wxEVT_SOCKET,[&](wxSocketEvent& ev){});
+    if(server!=nullptr)
+        delete server;
 }
 
 void MainFrm::MainFrmClose( wxCloseEvent& event )
@@ -171,61 +174,60 @@ void MainFrm::ListenBtnPressed( wxCommandEvent& event )
         PortCtl->Enable(false);
         ListenBtn->SetLabel("Stop");
         StatusBar->SetStatusText("Listenning",1);
+        server = new Connection(this,ip,port);
     }
     else
     {
         IPCtl->Enable(true);
         PortCtl->Enable(true);
         ListenBtn->SetLabel("Listen");
+        delete server;
+        server = nullptr;
     }
-    switch(state)
-    {
-        case 0:
-            ev = new wxCommandEvent(LED1_ON);
-            break;
-        case 1:
-            ev = new wxCommandEvent(LED2_ON);
-            break;
-        case 2:
-            ev = new wxCommandEvent(LED3_ON);
-            break;
-        case 3:
-            ev = new wxCommandEvent(LED1_OFF);
-            break;
-        case 4:
-            ev = new wxCommandEvent(LED2_OFF);
-            break;
-        case 5:
-            ev = new wxCommandEvent(LED3_OFF);
-            break;
-        case 6:
-            connections++;
-            socketev = new wxSocketEvent();
-            socketev->m_event = wxSOCKET_CONNECTION;
-            ev = socketev;
-            break;
-        case 7:
-            connections++;
-            socketev = new wxSocketEvent();
-            socketev->m_event = wxSOCKET_CONNECTION;
-            ev = socketev;
-            break;
-        case 8:
-            connections--;
-            socketev = new wxSocketEvent();
-            socketev->m_event = wxSOCKET_LOST;
-            ev = socketev;
-            break;
-        case 9:
-            connections--;
-            socketev = new wxSocketEvent();
-            socketev->m_event = wxSOCKET_LOST;
-            ev = socketev;
-            break;
-        default:
-            state = 0;
-            return;
-    };
-    state++;
-    QueueEvent(ev);
+//    switch(state)
+//    {
+//        case 0:
+//            ev = new wxCommandEvent(LED1_ON);
+//            break;
+//        case 1:
+//            ev = new wxCommandEvent(LED2_ON);
+//            break;
+//        case 2:
+//            ev = new wxCommandEvent(LED3_ON);
+//            break;
+//        case 3:
+//            ev = new wxCommandEvent(LED1_OFF);
+//            break;
+//        case 4:
+//            ev = new wxCommandEvent(LED2_OFF);
+//            break;
+//        case 5:
+//            ev = new wxCommandEvent(LED3_OFF);
+//            break;
+//        case 6:
+//            socketev = new wxSocketEvent();
+//            socketev->m_event = wxSOCKET_CONNECTION;
+//            ev = socketev;
+//            break;
+//        case 7:
+//            socketev = new wxSocketEvent();
+//            socketev->m_event = wxSOCKET_CONNECTION;
+//            ev = socketev;
+//            break;
+//        case 8:
+//            socketev = new wxSocketEvent();
+//            socketev->m_event = wxSOCKET_LOST;
+//            ev = socketev;
+//            break;
+//        case 9:
+//            socketev = new wxSocketEvent();
+//            socketev->m_event = wxSOCKET_LOST;
+//            ev = socketev;
+//            break;
+//        default:
+//            state = 0;
+//            return;
+//    };
+//    state++;
+//    QueueEvent(ev);
 }
