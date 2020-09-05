@@ -27,7 +27,7 @@ Connection::Connection(wxEvtHandler* evthandler,const std::string& ip_str, int p
     });
     
     server = new wxSocketServer(ip);
-    server->SetNotify(wxSOCKET_CONNECTION_FLAG | wxSOCKET_LOST_FLAG);
+    server->SetNotify(12);
     server->SetEventHandler(*evthandler);
     server->Notify(true);
 }
@@ -43,7 +43,10 @@ Connection::~Connection()
     server->Destroy();
     for(auto it=connections.begin();it!=connections.end();it++)
     {
+//        wxSocketEvent* ev = new wxSocketEvent(); 
+//        ev->m_event = wxSOCKET_LOST;
         (*it)->Destroy();
+//        evthandler->QueueEvent(ev);
     }
     connections.erase(connections.begin(),connections.end());
     for(auto it=leds.begin();it!=leds.end();it++)
@@ -89,7 +92,7 @@ void Connection::OnSocketEvt(wxSocketEvent& ev)
         wxSocketBase* connection = server->Accept(false);
         if(connection->IsConnected())
         {
-            connection->SetNotify(wxSOCKET_INPUT_FLAG | wxSOCKET_LOST_FLAG);
+            connection->SetNotify(9);
             connection->SetTimeout(2);
             connection->SetEventHandler(*evthandler);
             connection->Notify(true);
