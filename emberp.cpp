@@ -13,7 +13,7 @@ MainFrmBase::MainFrmBase( wxWindow* parent, wxWindowID id, const wxString& title
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 
-	StatusBar = this->CreateStatusBar( 1, wxSTB_SIZEGRIP, wxID_ANY );
+	StatusBar = this->CreateStatusBar( 2, wxSTB_SIZEGRIP, wxID_ANY );
 	wxBoxSizer* bSizer2;
 	bSizer2 = new wxBoxSizer( wxVERTICAL );
 

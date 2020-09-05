@@ -156,7 +156,92 @@ build/Debug/MinGW-Windows/MainFrm.o: MainFrm.cpp MainFrm.h emberp.h \
  C:/msys64/mingw64/include/wx-3.0/wx/msw/dialog.h \
  C:/msys64/mingw64/include/wx-3.0/wx/stockitem.h \
  C:/msys64/mingw64/include/wx-3.0/wx/generic/msgdlgg.h \
- C:/msys64/mingw64/include/wx-3.0/wx/msw/msgdlg.h
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/msgdlg.h events.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/wx.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/hash.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/log.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/generic/logg.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/app.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/eventfilter.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/build.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/cmdargs.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/init.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/init.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/wrapwin.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/app.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/stopwatch.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/time.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/timer.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/module.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/dc.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/brush.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/brush.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/pen.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/pen.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/affinematrix2d.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/affinematrix2dbase.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/geometry.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/dcclient.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/dcmemory.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/dcprint.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/dcscreen.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/menuitem.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/menuitem.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/ownerdrw.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/ownerdrw.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/menu.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/menu.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/dataobj.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/ole/dataform.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/ole/dataobj.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/ole/dataobj2.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/ctrlsub.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/ctrlsub.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/bmpbuttn.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/bmpbuttn.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/checkbox.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/checkbox.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/checklst.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/listbox.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/listbox.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/checklst.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/choice.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/choice.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/scrolbar.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/scrolbar.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/statbmp.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/statbmp.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/statbox.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/statbox.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/radiobox.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/radiobox.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/radiobut.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/radiobut.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/slider.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/slider.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/gauge.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/gauge.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/scrolwin.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/generic/scrolwin.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/dirdlg.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/dirdlg.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/toolbar.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/tbarbase.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/toolbar.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/combobox.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/combobox.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/layout.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/choicdlg.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/generic/choicdgg.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/textdlg.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/generic/textdlgg.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/valtext.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/filedlg.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/filedlg.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/mdi.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/mdi.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/socket.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/sckaddr.h
 MainFrm.h:
 emberp.h:
 C:/msys64/mingw64/include/wx-3.0/wx/artprov.h:
@@ -317,3 +402,89 @@ C:/msys64/mingw64/include/wx-3.0/wx/msw/dialog.h:
 C:/msys64/mingw64/include/wx-3.0/wx/stockitem.h:
 C:/msys64/mingw64/include/wx-3.0/wx/generic/msgdlgg.h:
 C:/msys64/mingw64/include/wx-3.0/wx/msw/msgdlg.h:
+events.h:
+C:/msys64/mingw64/include/wx-3.0/wx/wx.h:
+C:/msys64/mingw64/include/wx-3.0/wx/hash.h:
+C:/msys64/mingw64/include/wx-3.0/wx/log.h:
+C:/msys64/mingw64/include/wx-3.0/wx/generic/logg.h:
+C:/msys64/mingw64/include/wx-3.0/wx/app.h:
+C:/msys64/mingw64/include/wx-3.0/wx/eventfilter.h:
+C:/msys64/mingw64/include/wx-3.0/wx/build.h:
+C:/msys64/mingw64/include/wx-3.0/wx/cmdargs.h:
+C:/msys64/mingw64/include/wx-3.0/wx/init.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/init.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/wrapwin.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/app.h:
+C:/msys64/mingw64/include/wx-3.0/wx/stopwatch.h:
+C:/msys64/mingw64/include/wx-3.0/wx/time.h:
+C:/msys64/mingw64/include/wx-3.0/wx/timer.h:
+C:/msys64/mingw64/include/wx-3.0/wx/module.h:
+C:/msys64/mingw64/include/wx-3.0/wx/dc.h:
+C:/msys64/mingw64/include/wx-3.0/wx/brush.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/brush.h:
+C:/msys64/mingw64/include/wx-3.0/wx/pen.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/pen.h:
+C:/msys64/mingw64/include/wx-3.0/wx/affinematrix2d.h:
+C:/msys64/mingw64/include/wx-3.0/wx/affinematrix2dbase.h:
+C:/msys64/mingw64/include/wx-3.0/wx/geometry.h:
+C:/msys64/mingw64/include/wx-3.0/wx/dcclient.h:
+C:/msys64/mingw64/include/wx-3.0/wx/dcmemory.h:
+C:/msys64/mingw64/include/wx-3.0/wx/dcprint.h:
+C:/msys64/mingw64/include/wx-3.0/wx/dcscreen.h:
+C:/msys64/mingw64/include/wx-3.0/wx/menuitem.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/menuitem.h:
+C:/msys64/mingw64/include/wx-3.0/wx/ownerdrw.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/ownerdrw.h:
+C:/msys64/mingw64/include/wx-3.0/wx/menu.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/menu.h:
+C:/msys64/mingw64/include/wx-3.0/wx/dataobj.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/ole/dataform.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/ole/dataobj.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/ole/dataobj2.h:
+C:/msys64/mingw64/include/wx-3.0/wx/ctrlsub.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/ctrlsub.h:
+C:/msys64/mingw64/include/wx-3.0/wx/bmpbuttn.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/bmpbuttn.h:
+C:/msys64/mingw64/include/wx-3.0/wx/checkbox.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/checkbox.h:
+C:/msys64/mingw64/include/wx-3.0/wx/checklst.h:
+C:/msys64/mingw64/include/wx-3.0/wx/listbox.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/listbox.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/checklst.h:
+C:/msys64/mingw64/include/wx-3.0/wx/choice.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/choice.h:
+C:/msys64/mingw64/include/wx-3.0/wx/scrolbar.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/scrolbar.h:
+C:/msys64/mingw64/include/wx-3.0/wx/statbmp.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/statbmp.h:
+C:/msys64/mingw64/include/wx-3.0/wx/statbox.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/statbox.h:
+C:/msys64/mingw64/include/wx-3.0/wx/radiobox.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/radiobox.h:
+C:/msys64/mingw64/include/wx-3.0/wx/radiobut.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/radiobut.h:
+C:/msys64/mingw64/include/wx-3.0/wx/slider.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/slider.h:
+C:/msys64/mingw64/include/wx-3.0/wx/gauge.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/gauge.h:
+C:/msys64/mingw64/include/wx-3.0/wx/scrolwin.h:
+C:/msys64/mingw64/include/wx-3.0/wx/generic/scrolwin.h:
+C:/msys64/mingw64/include/wx-3.0/wx/dirdlg.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/dirdlg.h:
+C:/msys64/mingw64/include/wx-3.0/wx/toolbar.h:
+C:/msys64/mingw64/include/wx-3.0/wx/tbarbase.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/toolbar.h:
+C:/msys64/mingw64/include/wx-3.0/wx/combobox.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/combobox.h:
+C:/msys64/mingw64/include/wx-3.0/wx/layout.h:
+C:/msys64/mingw64/include/wx-3.0/wx/choicdlg.h:
+C:/msys64/mingw64/include/wx-3.0/wx/generic/choicdgg.h:
+C:/msys64/mingw64/include/wx-3.0/wx/textdlg.h:
+C:/msys64/mingw64/include/wx-3.0/wx/generic/textdlgg.h:
+C:/msys64/mingw64/include/wx-3.0/wx/valtext.h:
+C:/msys64/mingw64/include/wx-3.0/wx/filedlg.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/filedlg.h:
+C:/msys64/mingw64/include/wx-3.0/wx/mdi.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/mdi.h:
+C:/msys64/mingw64/include/wx-3.0/wx/socket.h:
+C:/msys64/mingw64/include/wx-3.0/wx/sckaddr.h:

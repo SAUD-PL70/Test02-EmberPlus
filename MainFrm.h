@@ -35,6 +35,9 @@ class MainFrm : public MainFrmBase
             wxColour textbackground;
             bool isValidIP(const std::string& str);
             bool isValidPort(const std::string& str, int& val);
+            
+            int state;
+            int connections;
 };
 
 #endif // __MainFrm__
