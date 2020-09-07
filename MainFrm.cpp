@@ -35,75 +35,67 @@ bool MainFrm::isValidPort(const std::string& str, int& val)
     return true;
 }
 
+void MainFrm::UpdateStatusBar()
+{
+    std::string str="Connections: ";
+    str += std::to_string(connections);
+    StatusBar->SetStatusText(str);
+    if(server!=nullptr)
+        StatusBar->SetStatusText("Listening",1);
+    else
+        StatusBar->SetStatusText("",1);
+}
+
 MainFrm::MainFrm( wxWindow* parent )
 :
 MainFrmBase( parent )
 {
     wxIcon icon(emberplus_icon_xpm);
     SetIcon(icon);
+    textbackground = IPCtl->GetBackgroundColour();
+    leds = { Led1, Led2, Led3 };
     server=nullptr;
     state=0;
     connections=0;
-    StatusBar->SetStatusText(wxT("Connections: 0"));
+    UpdateStatusBar();
+    
     ip = "127.0.0.1";
     port = DEFAULT_PORT;
-    textbackground = IPCtl->GetBackgroundColour();
+    
     ListenBtn->SetFocus();
-    Bind(LED1_ON,[&](wxCommandEvent& ev){
-        this->Led1->SetBackgroundColour(wxColour(255,0,0));
-        this->Led1->Refresh();
-        ev.Skip(false);
+
+    Bind(LED_ON,[&](wxCommandEvent& ev){
+        this->leds[ev.GetId()]->SetBackgroundColour(wxColour(255,0,0));
+        this->leds[ev.GetId()]->Refresh();
+        ev.Skip();
     });
-    Bind(LED2_ON,[&](wxCommandEvent& ev){
-        this->Led2->SetBackgroundColour(wxColour(255,0,0));
-        this->Led2->Refresh();
-        ev.Skip(false);
+
+    Bind(LED_OFF,[&](wxCommandEvent& ev){
+        this->leds[ev.GetId()]->SetBackgroundColour(wxColour(128,0,0));
+        this->leds[ev.GetId()]->Refresh();
+        ev.Skip();
     });
-    Bind(LED3_ON,[&](wxCommandEvent& ev){
-        this->Led3->SetBackgroundColour(wxColour(255,0,0));
-        this->Led3->Refresh();
-        ev.Skip(false);
+
+    Bind(CONNECTION_RECEIVED,[&](wxCommandEvent& ev){
+        connections++;
+        UpdateStatusBar();
+        ev.Skip();
     });
-    Bind(LED1_OFF,[&](wxCommandEvent& ev){
-        this->Led1->SetBackgroundColour(wxColour(128,0,0));
-        this->Led1->Refresh();
-        ev.Skip(false);
-    });
-    Bind(LED2_OFF,[&](wxCommandEvent& ev){
-        this->Led2->SetBackgroundColour(wxColour(128,0,0));
-        this->Led2->Refresh();
-        ev.Skip(false);
-    });
-    Bind(LED3_OFF,[&](wxCommandEvent& ev){
-        this->Led3->SetBackgroundColour(wxColour(128,0,0));
-        this->Led3->Refresh();
-        ev.Skip(false);
-    });
-    Bind(wxEVT_SOCKET,[&](wxSocketEvent& ev){
-        if(ev.GetSocketEvent()==wxSOCKET_CONNECTION)
-        {
-            connections++;
-        }
-        if(ev.GetSocketEvent()==wxSOCKET_LOST)
-        {
-            connections--;
-        }
-        std::string str="Connections: ";
-        str += std::to_string(connections);
-        StatusBar->SetStatusText(str);
+
+    Bind(CONNECTION_LOST,[&](wxCommandEvent& ev){
+        connections--;
+        UpdateStatusBar();
         ev.Skip();
     });
 }
 
 MainFrm::~MainFrm()
 {
-    Unbind(LED1_ON,[&](wxCommandEvent& ev){});
-    Unbind(LED2_ON,[&](wxCommandEvent& ev){});
-    Unbind(LED3_ON,[&](wxCommandEvent& ev){});
-    Unbind(LED1_OFF,[&](wxCommandEvent& ev){});
-    Unbind(LED2_OFF,[&](wxCommandEvent& ev){});
-    Unbind(LED3_OFF,[&](wxCommandEvent& ev){});
-    Unbind(wxEVT_SOCKET,[&](wxSocketEvent& ev){});
+
+    Unbind(LED_ON,[&](wxCommandEvent& ev){});
+    Unbind(LED_OFF,[&](wxCommandEvent& ev){});
+    Unbind(CONNECTION_RECEIVED,[&](wxCommandEvent& ev){});
+    Unbind(CONNECTION_LOST,[&](wxCommandEvent& ev){});
     if(server!=nullptr)
         delete server;
 }
@@ -165,69 +157,24 @@ void MainFrm::ValidadePort( wxFocusEvent& event )
 
 void MainFrm::ListenBtnPressed( wxCommandEvent& event )
 {
-    wxEvent* ev;
-    wxSocketEvent* socketev;
-    
     if(ListenBtn->GetLabel()=="Listen")
     {
         IPCtl->Enable(false);
         PortCtl->Enable(false);
         ListenBtn->SetLabel("Stop");
-        StatusBar->SetStatusText("Listenning",1);
-        server = new Connection(this,ip,port);
+        server = new Service(this,ip,port);
+        UpdateStatusBar();
     }
     else
     {
         IPCtl->Enable(true);
         PortCtl->Enable(true);
         ListenBtn->SetLabel("Listen");
-        delete server;
+        connections=0;
+        if(server!=nullptr)
+            delete server;
         server = nullptr;
+        UpdateStatusBar();
     }
-//    switch(state)
-//    {
-//        case 0:
-//            ev = new wxCommandEvent(LED1_ON);
-//            break;
-//        case 1:
-//            ev = new wxCommandEvent(LED2_ON);
-//            break;
-//        case 2:
-//            ev = new wxCommandEvent(LED3_ON);
-//            break;
-//        case 3:
-//            ev = new wxCommandEvent(LED1_OFF);
-//            break;
-//        case 4:
-//            ev = new wxCommandEvent(LED2_OFF);
-//            break;
-//        case 5:
-//            ev = new wxCommandEvent(LED3_OFF);
-//            break;
-//        case 6:
-//            socketev = new wxSocketEvent();
-//            socketev->m_event = wxSOCKET_CONNECTION;
-//            ev = socketev;
-//            break;
-//        case 7:
-//            socketev = new wxSocketEvent();
-//            socketev->m_event = wxSOCKET_CONNECTION;
-//            ev = socketev;
-//            break;
-//        case 8:
-//            socketev = new wxSocketEvent();
-//            socketev->m_event = wxSOCKET_LOST;
-//            ev = socketev;
-//            break;
-//        case 9:
-//            socketev = new wxSocketEvent();
-//            socketev->m_event = wxSOCKET_LOST;
-//            ev = socketev;
-//            break;
-//        default:
-//            state = 0;
-//            return;
-//    };
-//    state++;
-//    QueueEvent(ev);
+    event.Skip();
 }

@@ -11,106 +11,119 @@
  * Created on 3 de setembro de 2020, 09:59
  */
 #include "Connection.h"
+#include <chrono>
 
-int Connection::Led::numleds=0;
-
-Connection::Connection(wxEvtHandler* evthandler,const std::string& ip_str, int port)
+Service::Service(wxEvtHandler* evthandler,const std::string& ip_str, int port)
 {
     this->evthandler = evthandler;
+    finish = false;
     
     wxIPV4address ip;
     ip.Hostname(ip_str);
     ip.Service(port);
 
-    evthandler->Bind(wxEVT_SOCKET,[&](wxSocketEvent& ev){
-        OnSocketEvt(ev);
-    });
-    
     server = new wxSocketServer(ip);
-    server->SetNotify(12);
-    server->SetEventHandler(*evthandler);
-    server->Notify(true);
+    server->SetFlags(wxSOCKET_REUSEADDR | wxSOCKET_BLOCK );
+    
+    std::thread thread([this](){
+        while(this->server!=nullptr && !this->finish)
+        {
+            if(this->server->WaitForAccept(0,100))
+            {
+                wxSocketBase* connection = server->Accept();
+                if(connection!=nullptr)
+                {
+                    this->clients.insert(this->clients.end(),new Client(this, connection));
+                    wxCommandEvent* ev = new wxCommandEvent(CONNECTION_RECEIVED);
+                    this->evthandler->QueueEvent(ev);
+                }
+            }
+        }
+        if(this->server!=nullptr)
+            this->server->Destroy();
+    });
+    this->thread.swap(thread);
 }
 
-void Connection::AddLed(wxEventTypeTag<wxCommandEvent>& on,
-        wxEventTypeTag<wxCommandEvent>& off)
+Service::~Service()
 {
-    leds.insert(leds.end(),new Connection::Led(this,&on,&off));
-}
-
-Connection::~Connection()
-{
-    server->Destroy();
-    for(auto it=connections.begin();it!=connections.end();it++)
+    for(auto it=clients.begin();it!=clients.end();it++)
     {
-//        wxSocketEvent* ev = new wxSocketEvent(); 
-//        ev->m_event = wxSOCKET_LOST;
-        (*it)->Destroy();
-//        evthandler->QueueEvent(ev);
+        delete *it;
     }
-    connections.erase(connections.begin(),connections.end());
+    clients.erase(clients.begin(),clients.end());
     for(auto it=leds.begin();it!=leds.end();it++)
     {
         delete *it;
     }
     leds.erase(leds.begin(),leds.end());
-    evthandler->Unbind(wxEVT_SOCKET,[&](wxSocketEvent& ev){});
+    finish=true;
+    thread.join();
 }
 
-Connection::Led::Led(Connection* obj, wxEventTypeTag<wxCommandEvent>* on, wxEventTypeTag<wxCommandEvent>* off)
+void Service::AddLed(int ledid)
 {
-    numleds++;
-    this->obj = obj;
-    this->on = on;
-    this->off = off;
+    leds.insert(leds.end(),new Led(this,ledid));
+}
+
+Led::Led(Service* service, int ledid)
+{
+    this->ledid = ledid;
+    this->service = service;
     state = false;
     str = "Led ";
-    str += std::to_string(numleds);
+    str += std::to_string(ledid);
 }
 
-void Connection::Led::setState(bool state)
+void Led::setState(bool state)
 {
     if(this->state!=state)
     {
         this->state = state;
         if(state)
-            obj->evthandler->QueueEvent(new wxCommandEvent(*on));
+            service->evthandler->QueueEvent(new wxCommandEvent(LED_ON,ledid));
         else
-            obj->evthandler->QueueEvent(new wxCommandEvent(*off));
+            service->evthandler->QueueEvent(new wxCommandEvent(LED_OFF,ledid));
     }
 }
 
-Connection::Led::~Led()
+Led::~Led()
 {
     
 }
 
-void Connection::OnSocketEvt(wxSocketEvent& ev)
+int Client::connectioncounter=0;
+
+Client::Client(Service* service, wxSocketBase* connection)
 {
-    if(ev.GetSocketEvent()==wxSOCKET_CONNECTION)
-    {
-        wxSocketBase* connection = server->Accept(false);
-        if(connection->IsConnected())
+    this->connection = connection;
+    this->service = service;
+    finish=false;
+    connectionid = connectioncounter;
+    connectioncounter++;
+    std::thread t([this](){
+        while(this->connection!=nullptr && !this->finish)
         {
-            connection->SetNotify(9);
-            connection->SetTimeout(2);
-            connection->SetEventHandler(*evthandler);
-            connection->Notify(true);
-            connections.insert(connections.end(),connection);
-        }
-        else
-            connection->Destroy();
-    }
-    if(ev.GetSocketEvent()==wxSOCKET_LOST)
-    {
-        for(auto it=connections.begin();it!=connections.end();it++)
-        {
-            if((*it)->IsDisconnected())
+            if(this->connection->WaitForLost(0,50))
             {
-                (*it)->Destroy();
-                connections.erase(it);
+                this->finish=true;
+            }
+            if(this->connection->WaitForRead(0,50))
+            {
+                //@todo Implementar leitura de dados vindos do cliente remoto
+                this->connection->Discard();
             }
         }
-    }
-    ev.Skip();
+        if(this->connection!=nullptr)
+            this->connection->Destroy();
+        wxCommandEvent* ev = new wxCommandEvent(CONNECTION_LOST,this->connectionid);
+        this->service->evthandler->QueueEvent(ev);
+    });
+    thread.swap(t);
+}
+
+Client::~Client()
+{
+    finish=true;
+    thread.join();
 }
