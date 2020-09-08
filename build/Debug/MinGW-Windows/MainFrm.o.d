@@ -148,15 +148,9 @@ build/Debug/MinGW-Windows/MainFrm.o: MainFrm.cpp MainFrm.h emberp.h \
  C:/msys64/mingw64/include/wx-3.0/wx/weakref.h \
  C:/msys64/mingw64/include/wx-3.0/wx/meta/int2type.h \
  C:/msys64/mingw64/include/wx-3.0/wx/msw/toplevel.h \
- C:/msys64/mingw64/include/wx-3.0/wx/msw/frame.h \
- C:/msys64/mingw64/include/wx-3.0/wx/msgdlg.h \
- C:/msys64/mingw64/include/wx-3.0/wx/dialog.h \
- C:/msys64/mingw64/include/wx-3.0/wx/sharedptr.h \
- C:/msys64/mingw64/include/wx-3.0/wx/atomic.h \
- C:/msys64/mingw64/include/wx-3.0/wx/msw/dialog.h \
- C:/msys64/mingw64/include/wx-3.0/wx/stockitem.h \
- C:/msys64/mingw64/include/wx-3.0/wx/generic/msgdlgg.h \
- C:/msys64/mingw64/include/wx-3.0/wx/msw/msgdlg.h events.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/frame.h Connection.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/socket.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/sckaddr.h events.h \
  C:/msys64/mingw64/include/wx-3.0/wx/wx.h \
  C:/msys64/mingw64/include/wx-3.0/wx/hash.h \
  C:/msys64/mingw64/include/wx-3.0/wx/log.h \
@@ -191,6 +185,14 @@ build/Debug/MinGW-Windows/MainFrm.o: MainFrm.cpp MainFrm.h emberp.h \
  C:/msys64/mingw64/include/wx-3.0/wx/msw/ownerdrw.h \
  C:/msys64/mingw64/include/wx-3.0/wx/menu.h \
  C:/msys64/mingw64/include/wx-3.0/wx/msw/menu.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/dialog.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/sharedptr.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/atomic.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/dialog.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msgdlg.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/stockitem.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/generic/msgdlgg.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/msgdlg.h \
  C:/msys64/mingw64/include/wx-3.0/wx/dataobj.h \
  C:/msys64/mingw64/include/wx-3.0/wx/msw/ole/dataform.h \
  C:/msys64/mingw64/include/wx-3.0/wx/msw/ole/dataobj.h \
@@ -239,9 +241,7 @@ build/Debug/MinGW-Windows/MainFrm.o: MainFrm.cpp MainFrm.h emberp.h \
  C:/msys64/mingw64/include/wx-3.0/wx/filedlg.h \
  C:/msys64/mingw64/include/wx-3.0/wx/msw/filedlg.h \
  C:/msys64/mingw64/include/wx-3.0/wx/mdi.h \
- C:/msys64/mingw64/include/wx-3.0/wx/msw/mdi.h \
- C:/msys64/mingw64/include/wx-3.0/wx/socket.h \
- C:/msys64/mingw64/include/wx-3.0/wx/sckaddr.h
+ C:/msys64/mingw64/include/wx-3.0/wx/msw/mdi.h
 MainFrm.h:
 emberp.h:
 C:/msys64/mingw64/include/wx-3.0/wx/artprov.h:
@@ -394,14 +394,9 @@ C:/msys64/mingw64/include/wx-3.0/wx/weakref.h:
 C:/msys64/mingw64/include/wx-3.0/wx/meta/int2type.h:
 C:/msys64/mingw64/include/wx-3.0/wx/msw/toplevel.h:
 C:/msys64/mingw64/include/wx-3.0/wx/msw/frame.h:
-C:/msys64/mingw64/include/wx-3.0/wx/msgdlg.h:
-C:/msys64/mingw64/include/wx-3.0/wx/dialog.h:
-C:/msys64/mingw64/include/wx-3.0/wx/sharedptr.h:
-C:/msys64/mingw64/include/wx-3.0/wx/atomic.h:
-C:/msys64/mingw64/include/wx-3.0/wx/msw/dialog.h:
-C:/msys64/mingw64/include/wx-3.0/wx/stockitem.h:
-C:/msys64/mingw64/include/wx-3.0/wx/generic/msgdlgg.h:
-C:/msys64/mingw64/include/wx-3.0/wx/msw/msgdlg.h:
+Connection.h:
+C:/msys64/mingw64/include/wx-3.0/wx/socket.h:
+C:/msys64/mingw64/include/wx-3.0/wx/sckaddr.h:
 events.h:
 C:/msys64/mingw64/include/wx-3.0/wx/wx.h:
 C:/msys64/mingw64/include/wx-3.0/wx/hash.h:
@@ -437,6 +432,14 @@ C:/msys64/mingw64/include/wx-3.0/wx/ownerdrw.h:
 C:/msys64/mingw64/include/wx-3.0/wx/msw/ownerdrw.h:
 C:/msys64/mingw64/include/wx-3.0/wx/menu.h:
 C:/msys64/mingw64/include/wx-3.0/wx/msw/menu.h:
+C:/msys64/mingw64/include/wx-3.0/wx/dialog.h:
+C:/msys64/mingw64/include/wx-3.0/wx/sharedptr.h:
+C:/msys64/mingw64/include/wx-3.0/wx/atomic.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/dialog.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msgdlg.h:
+C:/msys64/mingw64/include/wx-3.0/wx/stockitem.h:
+C:/msys64/mingw64/include/wx-3.0/wx/generic/msgdlgg.h:
+C:/msys64/mingw64/include/wx-3.0/wx/msw/msgdlg.h:
 C:/msys64/mingw64/include/wx-3.0/wx/dataobj.h:
 C:/msys64/mingw64/include/wx-3.0/wx/msw/ole/dataform.h:
 C:/msys64/mingw64/include/wx-3.0/wx/msw/ole/dataobj.h:
@@ -486,5 +489,3 @@ C:/msys64/mingw64/include/wx-3.0/wx/filedlg.h:
 C:/msys64/mingw64/include/wx-3.0/wx/msw/filedlg.h:
 C:/msys64/mingw64/include/wx-3.0/wx/mdi.h:
 C:/msys64/mingw64/include/wx-3.0/wx/msw/mdi.h:
-C:/msys64/mingw64/include/wx-3.0/wx/socket.h:
-C:/msys64/mingw64/include/wx-3.0/wx/sckaddr.h:

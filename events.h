@@ -14,11 +14,10 @@
 
 #ifndef EVENTS_H
 #define EVENTS_H
-wxDEFINE_EVENT(LED1_ON, wxCommandEvent);
-wxDEFINE_EVENT(LED2_ON, wxCommandEvent);
-wxDEFINE_EVENT(LED3_ON, wxCommandEvent);
-wxDEFINE_EVENT(LED1_OFF, wxCommandEvent);
-wxDEFINE_EVENT(LED2_OFF, wxCommandEvent);
-wxDEFINE_EVENT(LED3_OFF, wxCommandEvent);
+wxDECLARE_EVENT(LED_ON, wxCommandEvent);
+wxDECLARE_EVENT(LED_OFF, wxCommandEvent);
+wxDECLARE_EVENT(CONNECTION_RECEIVED, wxCommandEvent);
+wxDECLARE_EVENT(CONNECTION_CLOSED, wxCommandEvent);
+wxDECLARE_EVENT(CONNECTION_ERROR, wxCommandEvent);
 #endif /* EVENTS_H */
 

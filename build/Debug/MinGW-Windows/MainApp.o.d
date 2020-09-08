@@ -239,7 +239,9 @@ build/Debug/MinGW-Windows/MainApp.o: MainApp.cpp \
  C:/msys64/mingw64/include/wx-3.0/wx/filename.h \
  C:/msys64/mingw64/include/wx-3.0/wx/file.h \
  C:/msys64/mingw64/include/wx-3.0/wx/convauto.h \
- C:/msys64/mingw64/include/wx-3.0/wx/xrc/xmlreshandler.h
+ C:/msys64/mingw64/include/wx-3.0/wx/xrc/xmlreshandler.h Connection.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/socket.h \
+ C:/msys64/mingw64/include/wx-3.0/wx/sckaddr.h events.h
 C:/msys64/mingw64/include/wx-3.0/wx/wx.h:
 C:/msys64/mingw64/include/wx-3.0/wx/defs.h:
 C:/msys64/mingw64/include/wx-3.0/wx/platform.h:
@@ -483,3 +485,7 @@ C:/msys64/mingw64/include/wx-3.0/wx/filename.h:
 C:/msys64/mingw64/include/wx-3.0/wx/file.h:
 C:/msys64/mingw64/include/wx-3.0/wx/convauto.h:
 C:/msys64/mingw64/include/wx-3.0/wx/xrc/xmlreshandler.h:
+Connection.h:
+C:/msys64/mingw64/include/wx-3.0/wx/socket.h:
+C:/msys64/mingw64/include/wx-3.0/wx/sckaddr.h:
+events.h:
