@@ -38,8 +38,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/Connection.o \
 	${OBJECTDIR}/MainApp.o \
 	${OBJECTDIR}/MainFrm.o \
-	${OBJECTDIR}/TestEmberTree.o \
-	${OBJECTDIR}/emberp.o
+	${OBJECTDIR}/ember.o \
+	${OBJECTDIR}/tst.o
 
 
 # C Compiler Flags
@@ -81,15 +81,15 @@ ${OBJECTDIR}/MainFrm.o: MainFrm.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MainFrm.o MainFrm.cpp
 
-${OBJECTDIR}/TestEmberTree.o: TestEmberTree.cpp
+${OBJECTDIR}/ember.o: ember.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TestEmberTree.o TestEmberTree.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ember.o ember.cpp
 
-${OBJECTDIR}/emberp.o: emberp.cpp
+${OBJECTDIR}/tst.o: tst.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/emberp.o emberp.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tst.o tst.cpp
 
 # Subprojects
 .build-subprojects:

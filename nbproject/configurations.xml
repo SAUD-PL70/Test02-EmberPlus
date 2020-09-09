@@ -6,9 +6,9 @@
                    projectFiles="true">
       <itemPath>Connection.h</itemPath>
       <itemPath>MainFrm.h</itemPath>
-      <itemPath>TestEmberTree.h</itemPath>
-      <itemPath>emberp.h</itemPath>
+      <itemPath>ember.h</itemPath>
       <itemPath>events.h</itemPath>
+      <itemPath>tst.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -21,9 +21,9 @@
       <itemPath>Connection.cpp</itemPath>
       <itemPath>MainApp.cpp</itemPath>
       <itemPath>MainFrm.cpp</itemPath>
-      <itemPath>TestEmberTree.cpp</itemPath>
-      <itemPath>emberp.cpp</itemPath>
+      <itemPath>ember.cpp</itemPath>
       <itemPath>emberplus_icon.c</itemPath>
+      <itemPath>tst.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -81,17 +81,17 @@
       </item>
       <item path="Test02_EmberPlus.fbp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="TestEmberTree.cpp" ex="false" tool="1" flavor2="0">
+      <item path="ember.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="TestEmberTree.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="emberp.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="emberp.h" ex="false" tool="3" flavor2="0">
+      <item path="ember.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="emberplus_icon.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="events.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tst.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tst.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -126,17 +126,17 @@
       </item>
       <item path="Test02_EmberPlus.fbp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="TestEmberTree.cpp" ex="false" tool="1" flavor2="0">
+      <item path="ember.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="TestEmberTree.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="emberp.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="emberp.h" ex="false" tool="3" flavor2="0">
+      <item path="ember.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="emberplus_icon.c" ex="false" tool="3" flavor2="0">
       </item>
       <item path="events.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tst.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tst.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

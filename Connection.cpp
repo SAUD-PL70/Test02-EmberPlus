@@ -47,6 +47,7 @@ Connection::Connection(Server* srv, wxSocketBase* cli)
     if(IsOk())
     {
         client->SetNotify(wxSOCKET_INPUT_FLAG | wxSOCKET_LOST_FLAG);
+//        client->SetFlags(wxSOCKET_WAITALL);
         client->SetEventHandler(*this);
         client->Notify(true);
     }

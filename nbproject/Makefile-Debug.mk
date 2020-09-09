@@ -38,9 +38,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/Connection.o \
 	${OBJECTDIR}/MainApp.o \
 	${OBJECTDIR}/MainFrm.o \
-	${OBJECTDIR}/TestEmberTree.o \
-	${OBJECTDIR}/emberp.o \
-	${OBJECTDIR}/emberplus_icon.o
+	${OBJECTDIR}/ember.o \
+	${OBJECTDIR}/emberplus_icon.o \
+	${OBJECTDIR}/tst.o
 
 
 # C Compiler Flags
@@ -82,20 +82,20 @@ ${OBJECTDIR}/MainFrm.o: MainFrm.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MainFrm.o MainFrm.cpp
 
-${OBJECTDIR}/TestEmberTree.o: TestEmberTree.cpp
+${OBJECTDIR}/ember.o: ember.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TestEmberTree.o TestEmberTree.cpp
-
-${OBJECTDIR}/emberp.o: emberp.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/emberp.o emberp.cpp
+	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ember.o ember.cpp
 
 ${OBJECTDIR}/emberplus_icon.o: emberplus_icon.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/emberplus_icon.o emberplus_icon.c
+
+${OBJECTDIR}/tst.o: tst.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tst.o tst.cpp
 
 # Subprojects
 .build-subprojects:
