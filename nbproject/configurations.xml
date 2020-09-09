@@ -5,8 +5,8 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Connection.h</itemPath>
-      <itemPath>EmberTree.h</itemPath>
       <itemPath>MainFrm.h</itemPath>
+      <itemPath>TestEmberTree.h</itemPath>
       <itemPath>emberp.h</itemPath>
       <itemPath>events.h</itemPath>
     </logicalFolder>
@@ -19,9 +19,9 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Connection.cpp</itemPath>
-      <itemPath>EmberTree.cpp</itemPath>
       <itemPath>MainApp.cpp</itemPath>
       <itemPath>MainFrm.cpp</itemPath>
+      <itemPath>TestEmberTree.cpp</itemPath>
       <itemPath>emberp.cpp</itemPath>
       <itemPath>emberplus_icon.c</itemPath>
     </logicalFolder>
@@ -47,8 +47,8 @@
   <confs>
     <conf name="Debug" type="1" platformSpecific="true">
       <toolsSet>
-        <compilerSet>MinGW|MinGW</compilerSet>
-        <platform>3</platform>
+        <compilerSet>default</compilerSet>
+        <platform>2</platform>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
@@ -58,6 +58,8 @@
           <incDir>
             <pElem>C:/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember</pElem>
             <pElem>C:/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101</pElem>
+            <pElem>../../../ember-plus-1.8.2/libember/Headers/ember</pElem>
+            <pElem>../../../ember-plus-1.8.2/libs101/Headers/s101</pElem>
           </incDir>
           <commandLine>`wx-config --cxxflags`</commandLine>
         </ccTool>
@@ -71,10 +73,6 @@
       </item>
       <item path="Connection.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="EmberTree.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="EmberTree.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="MainApp.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MainFrm.cpp" ex="false" tool="1" flavor2="0">
@@ -82,6 +80,10 @@
       <item path="MainFrm.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Test02_EmberPlus.fbp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TestEmberTree.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TestEmberTree.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="emberp.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -116,10 +118,6 @@
       </item>
       <item path="Connection.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="EmberTree.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="EmberTree.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="MainApp.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MainFrm.cpp" ex="false" tool="1" flavor2="0">
@@ -127,6 +125,10 @@
       <item path="MainFrm.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Test02_EmberPlus.fbp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TestEmberTree.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TestEmberTree.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="emberp.cpp" ex="false" tool="1" flavor2="0">
       </item>

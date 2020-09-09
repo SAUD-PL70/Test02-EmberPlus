@@ -10,27 +10,38 @@
  * 
  * Created on 3 de setembro de 2020, 09:59
  */
+#include "TestEmberTree.h"
 #include "Connection.h"
 
 Connection::Connection(Server* srv, wxSocketBase* cli)
+
 {
     this->server = srv;
     this->client = cli;
+    ember = new TestEmberTree(this,&server->leds);
     
     Bind(wxEVT_SOCKET,[this](wxSocketEvent& ev){
         if(ev.m_event==wxSOCKET_LOST)
         {
-            for(auto it=this->server->connections.begin();it!=this->server->connections.end();it++)
-                if(!(*it)->IsConnected()){
+            for(std::list<Connection*>::iterator it=this->server->connections.begin();it!=this->server->connections.end();it++)
+                if(*it==this){
                     this->server->connections.erase(it);
-                    it++;
                     delete this;
+                    break;
                 }
         }
         if(ev.m_event==wxSOCKET_INPUT)
         {
-            // @todo Implement reading data from client
-            ev.GetSocket()->Discard();
+            char buffer[2048];
+            
+            ev.GetSocket()->Read((void*)&buffer,2048);
+            
+            uint32_t size = ev.GetSocket()->LastReadCount();
+            
+            ember->Decode((void*)&buffer,size);
+            
+            if(ember->hasResponse())
+                ev.GetSocket()->Write(ember->getBuffer(),ember->getSize());
         }
     });
     if(IsOk())
@@ -43,6 +54,7 @@ Connection::Connection(Server* srv, wxSocketBase* cli)
 
 Connection::~Connection()
 {
+    delete ember;
     Unbind(wxEVT_SOCKET,[this](wxSocketEvent& ev){});
     if(client!=nullptr)
     {

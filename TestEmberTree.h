@@ -11,17 +11,17 @@
  * Created on 5 de setembro de 2020, 20:01
  */
 
+#ifndef TESTEMBERTREE_H
+#define TESTEMBERTREE_H
+
 #include "Connection.h"
 
-#ifndef EMBERTREE_H
-#define EMBERTREE_H
-
-class EmberTree {
+class TestEmberTree {
 public:
-    EmberTree(Connection* conn, Server::Leds* leds);
+    TestEmberTree(Connection* conn, Server::Leds* leds);
     void Decode(void* buffer, uint32_t size);
     void EncodeKeepAlive();
-    virtual ~EmberTree();
+    virtual ~TestEmberTree();
     
     bool hasResponse() { return hasresponse; }
     bool wasKeptAlive() { return keptalive; }

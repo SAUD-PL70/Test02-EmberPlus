@@ -17,8 +17,9 @@
 #ifndef CONNECTION_H
 #define CONNECTION_H
 
-class Server;
 
+class Server;
+class TestEmberTree;
 /**
  * Manages to connection to the ember consumers
  */
@@ -31,6 +32,7 @@ public:
 private:
     Server* server;
     wxSocketBase* client;
+    TestEmberTree* ember;
 };
 
 /**
