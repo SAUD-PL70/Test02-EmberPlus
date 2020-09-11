@@ -10,7 +10,7 @@
  *
  * Created on 9 de setembro de 2020, 09:33
  */
-#include <list>
+#include <vector>
 
 #ifndef EMBER_H
 #define EMBER_H
@@ -50,10 +50,19 @@ public:
      */
     virtual ~Ember();
 protected:
+    /**
+     * Get the full Glow object which represents the ember actual entity
+     * @return Return a pointer to the Glow object. The caller must cast the glow object to the right type
+     */
     virtual void* getEmberObj() = 0;
-    virtual bool Decode( void* obj );
-    virtual void* getNode();
-    virtual void* Encode();
+    /**
+     * Receive a Glow object and interpret it. Updating its data as necessary or sending glow objects to its children
+     * @param obj   The pointer to the Glow object. It will be cast internally
+     * @return true if the received is matching the expected object type and id
+     */
+    virtual bool Decode( void* obj )=0;
+    virtual void* getNode()=0;
+    virtual void* Encode()=0;
 private:
     Ember* parent;
     int id;
@@ -70,21 +79,34 @@ public:
     virtual void* getNode();
     virtual void* Encode();
 private:
-    std::list<Node> children;
+    std::vector<Node> children;
+};
+
+class pBool : public Ember {
+public:
+    pBool( Ember* parent,
+           int id,
+           std::string identifier,
+           std::string description="",
+           bool (*GetValue)(),
+           void (*SetValue)(bool value)=nullptr);
+private:
+    bool (*GetValue)();
+    void (*SetValue)(bool value);
 };
 
 class Root : public Ember {
 public:
     Root( int id, std::string identifier, std::string description="" );
     bool Decode(void* buffer, uint32_t size);
-    void AddNode(Node& node);
     void EncodeKeepAlive();
+    void AddNode(Node& node) { nodes.emplace(node); }
     void* getBuffer() { return (void*)&buffer; }
     uint32_t getSize() { return size; }
     bool hasResponse() { return hasresponse; }
     bool keptAlive() { return keptalive); }
 private:
-    std::list<Node> nodes;
+    std::vector<Node> children;
     bool hasresponse;   //Indicates that the buffer contains a ember message ready to be sent
     bool keptalive;     //True every time a ember message was succesfully decoded, false after EncodeKeepAlive()
     char buffer[1024];  //Max ember message size
