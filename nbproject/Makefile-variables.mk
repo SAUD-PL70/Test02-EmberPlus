@@ -7,13 +7,13 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=GNU-Linux
-CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
+CND_PLATFORM_Debug=MinGW64-Windows
+CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW64-Windows
 CND_ARTIFACT_NAME_Debug=test02-emberplus
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/test02-emberplus
-CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW64-Windows/test02-emberplus
+CND_PACKAGE_DIR_Debug=dist/Debug/MinGW64-Windows/package
 CND_PACKAGE_NAME_Debug=test02-emberplus.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/test02-emberplus.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW64-Windows/package/test02-emberplus.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux

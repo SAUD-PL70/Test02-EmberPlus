@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux
-CND_DLIB_EXT=so
+CND_PLATFORM=MinGW64-Windows
+CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -61,31 +61,31 @@ LDLIBSOPTIONS=`wx-config --libs`
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/test02-emberplus
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/test02-emberplus.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/test02-emberplus: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/test02-emberplus.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/test02-emberplus ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Connection.o: Connection.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Connection.o Connection.cpp
+	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -I../../../../../msys64/home/josepva/ember-plus/libember/Headers/ember -I../../../../../msys64/home/josepva/ember-plus/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Connection.o Connection.cpp
 
 ${OBJECTDIR}/MainApp.o: MainApp.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MainApp.o MainApp.cpp
+	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -I../../../../../msys64/home/josepva/ember-plus/libember/Headers/ember -I../../../../../msys64/home/josepva/ember-plus/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MainApp.o MainApp.cpp
 
 ${OBJECTDIR}/MainFrm.o: MainFrm.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MainFrm.o MainFrm.cpp
+	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -I../../../../../msys64/home/josepva/ember-plus/libember/Headers/ember -I../../../../../msys64/home/josepva/ember-plus/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MainFrm.o MainFrm.cpp
 
 ${OBJECTDIR}/ember.o: ember.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ember.o ember.cpp
+	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -I../../../../../msys64/home/josepva/ember-plus/libember/Headers/ember -I../../../../../msys64/home/josepva/ember-plus/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ember.o ember.cpp
 
 ${OBJECTDIR}/emberplus_icon.o: emberplus_icon.c
 	${MKDIR} -p ${OBJECTDIR}
@@ -95,7 +95,7 @@ ${OBJECTDIR}/emberplus_icon.o: emberplus_icon.c
 ${OBJECTDIR}/tst.o: tst.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tst.o tst.cpp
+	$(COMPILE.cc) -g -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libember/Headers/ember -I/C/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101 -I../../../ember-plus-1.8.2/libember/Headers/ember -I../../../ember-plus-1.8.2/libs101/Headers/s101 -I../../../../../msys64/home/josepva/ember-plus/libember/Headers/ember -I../../../../../msys64/home/josepva/ember-plus/libs101/Headers/s101 -std=c++17 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tst.o tst.cpp
 
 # Subprojects
 .build-subprojects:

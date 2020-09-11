@@ -15,102 +15,66 @@
 #ifndef EMBER_H
 #define EMBER_H
 
-class Ember {
-public:
-    /**
-     * Constructor of the virtual class Ember
-     * @param parent        The parent Ember object. If there is no parent it is nullptr
-     * @param id            The ember id of the object
-     * @param identifier    The identifier string of the obj
-     * @param description   The description string of the object
-     */
-    Ember( Ember* parent, int id, std::string identifier, std::string description="" );
-    /**
-     * Gets the parent ember object, which is the Ember object that contains this object 
-     * @return  The pointer to the parent object or nullptr if this object is not contained by other Ember object
-     */
-    Ember* getParent() { return parent; }
-    /**
-     * Gets the ember id number
-     * @return The ember id number
-     */
-    int getId() { return id; }
-    /**
-     * Gets the identifier string of the object
-     * @return The identifier string of the object
-     */
-    std::string getIdentifier() { return identifier; }
-    /**
-     * Gets the description string of the object
-     * @return the description string of the object
-     */
-    std::string getDescription() { return description; }
-    /**
-     * The destructor of the Ember object
-     */
-    virtual ~Ember();
+namespace ember {
+
+class Node
+{
+    friend class Root;
+    public:
+        Node(Node* parent, int id, std::string identifier, std::string description);
+        int getId();
+        std::string getIdentifier();
+        std::string getDescription();
+        AddChild(Node* node);
 protected:
-    /**
-     * Get the full Glow object which represents the ember actual entity
-     * @return Return a pointer to the Glow object. The caller must cast the glow object to the right type
-     */
-    virtual void* getEmberObj() = 0;
-    /**
-     * Receive a Glow object and interpret it. Updating its data as necessary or sending glow objects to its children
-     * @param obj   The pointer to the Glow object. It will be cast internally
-     * @return true if the received is matching the expected object type and id
-     */
-    virtual bool Decode( void* obj )=0;
-    virtual void* getNode()=0;
-    virtual void* Encode()=0;
-private:
-    Ember* parent;
-    int id;
-    std::string identifier;
-    std::string description;
+        Node* Decode(void* glow_obj);
+        void* Encode(int dir_mask=0);
 };
 
-class pBool;
-class Node : public Ember {
-public:
-    Node( Ember* parent, int id, std::string identifier, std::string description="" );
-    virtual bool Decode( void* obj );
-    virtual void* getEmberObj();
-    virtual void* getNode();
-    virtual void* Encode();
-private:
-    std::vector<Node> children;
+class Root
+{
+    public:
+        Root();
+        /**
+         * Add a child node to the structure
+         * @param node  The node to be added
+         */
+        void AddChild(Node* node);
+        /**
+         * Decode a buffer with contents received from a ember pair
+         * @param buffer    Pointer to the buffer with s101 message
+         * @param size      Size in bytes of the buffer contents
+         * @return          Return the pointer to lowest node which needs to give a response back to the ember pair or nullptr if no response is due
+         */
+        Node* Decode(void* buffer, uint32_t size);
+        /**
+         * If the last Decode method call was successful then the keptalive is true. False otherwise
+         * @return 
+         */
+        bool isOk();
+        /**
+         * Encode a response to the ember pair
+         * @param node      Pointer to the lowest node object that needs to give a response. Usually you need to give the response of the method Decode as this parameter
+         * @return          true if the encoding process was succesful
+         */
+        bool Encode(Node* node=nullptr);
+        /**
+         * Get the buffer address of the last encoded data
+         * @return The addrss of the last encoded data or nullptr if no data to be transmitted
+         */
+        void* getBuffer();
+        /**
+         * Get size of the contents in the buffer or 0 if no data needed to be transmitted
+         * @return Size of the data buffer in bytes or 0 if no data to be transmitted
+         */
+        uint32_t getSize();
+    private:
+        const int MAX_BUFFER_SIZE=2048;
+        bool ok;
+        char buffer[MAX_BUFFER_SIZE];
+        uint32_t size;
+        std::vector<std::unique_ptr<Node>> children;
 };
-
-class pBool : public Ember {
-public:
-    pBool( Ember* parent,
-           int id,
-           std::string identifier,
-           std::string description="",
-           bool (*GetValue)(),
-           void (*SetValue)(bool value)=nullptr);
-private:
-    bool (*GetValue)();
-    void (*SetValue)(bool value);
-};
-
-class Root : public Ember {
-public:
-    Root( int id, std::string identifier, std::string description="" );
-    bool Decode(void* buffer, uint32_t size);
-    void EncodeKeepAlive();
-    void AddNode(Node& node) { nodes.emplace(node); }
-    void* getBuffer() { return (void*)&buffer; }
-    uint32_t getSize() { return size; }
-    bool hasResponse() { return hasresponse; }
-    bool keptAlive() { return keptalive); }
-private:
-    std::vector<Node> children;
-    bool hasresponse;   //Indicates that the buffer contains a ember message ready to be sent
-    bool keptalive;     //True every time a ember message was succesfully decoded, false after EncodeKeepAlive()
-    char buffer[1024];  //Max ember message size
-    uint32_t size;      //Size of the contents in the buffer
-};
-
+    
+}
 #endif /* EMBER_H */

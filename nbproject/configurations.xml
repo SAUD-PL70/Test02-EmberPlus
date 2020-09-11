@@ -48,7 +48,7 @@
     <conf name="Debug" type="1" platformSpecific="true">
       <toolsSet>
         <compilerSet>default</compilerSet>
-        <platform>2</platform>
+        <platform>3</platform>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
@@ -60,6 +60,8 @@
             <pElem>C:/msys64/home/SAUD-DEVOPS/ember-plus-1.8.2/libs101/Headers/s101</pElem>
             <pElem>../../../ember-plus-1.8.2/libember/Headers/ember</pElem>
             <pElem>../../../ember-plus-1.8.2/libs101/Headers/s101</pElem>
+            <pElem>../../../../../msys64/home/josepva/ember-plus/libember/Headers/ember</pElem>
+            <pElem>../../../../../msys64/home/josepva/ember-plus/libs101/Headers/s101</pElem>
           </incDir>
           <commandLine>`wx-config --cxxflags`</commandLine>
         </ccTool>
